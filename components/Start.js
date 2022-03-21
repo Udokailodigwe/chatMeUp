@@ -6,7 +6,8 @@ import {
    TextInput, 
    ImageBackground, 
    TouchableOpacity, 
-   Pressable 
+   // Pressable,
+   Button 
 } from 'react-native'; // import react-native components
 
 const image = require ('../assets/BackgroundImage.png');
@@ -38,49 +39,72 @@ export default class Start extends React.Component {
       return (
          <View style={styles.container}>
             <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-            <Text style={styles.title}>
+            <Text style={styles.title}
+                        accessibilityRole = 'App Title'
+                        accessibilityLabel='Welcome to UDO chat App'>
                UDO {"\n"} Chat App
             </Text >
          <View style={styles.mid_view}>
-            <Text style={styles.input_label}>Input your name </Text>
+            <Text style={styles.input_label} accessibilityLabel='Input your name'>
+               Input your name
+            </Text>
             <TextInput 
+               accessibilityLabel='Input your name in text field'
                style={styles.text_input}
                value={this.state.name}
                onChangeText={(name) => this.setState({name})}
             /> 
          <View>
-            <Text style={styles.color_info_text}> Tap to select different Chat Room color</Text>
-               <View style={styles.color_display}>
+            <Text  style={styles.color_info_text} 
+                        accessibilityLabel='Select colors for chatroom below'> 
+               Tap to select different Chat Room color
+            </Text>
+         <View style={styles.color_display}>
                   {/*TouchableOpacity allowed for the selection of various colors, recieved setState*/}
-                     <TouchableOpacity
-                        style={styles.first_color}
-                        onPress={() => this.changeBackgroundColor(this.colors.skyblue)}> 
-                     </TouchableOpacity>               
-                     <TouchableOpacity
-                        style={styles.second_color}
-                        onPress={() => this.changeBackgroundColor(this.colors.gold)}>
-                     </TouchableOpacity>               
-                     <TouchableOpacity
-                        style={styles.third_color}
-                        onPress={() => this.changeBackgroundColor(this.colors.darkgreen)}>
-                     </TouchableOpacity>               
-                     <TouchableOpacity
-                        style={styles.fourth_color}
-                        onPress={() => this.changeBackgroundColor(this.colors.green)}>
-                     </TouchableOpacity>               
-               </View>
+            <TouchableOpacity
+            accessible={true}
+            accessibilityLabel='Chatroom color'
+            accessibilityHint="Select Chatroom color"
+            style={styles.first_color}
+            onPress={() => this.changeBackgroundColor(this.colors.skyblue)}> 
+            </TouchableOpacity>               
+            <TouchableOpacity
+            accessible={true}
+            accessibilityLabel='Chatroom color'
+            accessibilityHint="Select Chatroom color"
+            style={styles.second_color}
+            onPress={() => this.changeBackgroundColor(this.colors.gold)}>
+            </TouchableOpacity>               
+            <TouchableOpacity
+            accessible={true}
+            accessibilityLabel='Chatroom color'
+            accessibilityHint="Select Chatroom color"
+            style={styles.third_color}
+            onPress={() => this.changeBackgroundColor(this.colors.darkgreen)}>
+            </TouchableOpacity>               
+            <TouchableOpacity
+            accessible={true}
+            accessibilityLabel='Chatroom color'
+            accessibilityHint="Select Chatroom color"
+            style={styles.fourth_color}
+            onPress={() => this.changeBackgroundColor(this.colors.green)}>
+            </TouchableOpacity>               
+            </View>
             </View>
             {/*Used pressable to form button like component*/}
-            <Pressable 
+            <Button 
+            accessibilityLabel='Enter chatroom'
+            title = ' Enter Chat Room'
             style={styles.pressable_button}
             //onPress function to route and navigate props to chat screen, props like name, bgcolor.
             onPress={() => this.props.navigation.navigate('Chat', {
                name:  this.state.name, 
+               name2:  this.state.name, 
                backgroundColor: this.state.backgroundColor
                })}
             >
-               <Text style= {styles.pressable_button_text}>Enter Chat Room</Text>
-            </Pressable>
+               {/* <Text style= {styles.pressable_button_text}>Enter Chat Room</Text> */}
+            </Button>
          </View>
          </ImageBackground>
       </View>
@@ -174,23 +198,23 @@ color_info_text: {
    color: 'white',
    margin: 10
 },
-pressable_button: {
-   width: '50%',
-   height: 35,
-   backgroundColor: '#8A95A5',
-   alignItems: 'center',
-   justifyContent: 'center',
-   margin: 20,
-   marginLeft: 90,
-   padding: 3,
-   borderRadius: 15,
-   shadowOpacity: 6,
+// pressable_button: {
+//    width: '50%',
+//    height: 35,
+//    backgroundColor: '#8A95A5',
+//    alignItems: 'center',
+//    justifyContent: 'center',
+//    margin: 20,
+//    marginLeft: 90,
+//    padding: 3,
+//    borderRadius: 15,
+//    shadowOpacity: 6,
 
-},
-pressable_button_text: {
-   color: 'black',
-   fontSize: 22,
-   fontWeight: "300",
-   fontStyle: 'italic',
-}
+// },
+// pressable_button_text: {
+//    color: 'black',
+//    fontSize: 22,
+//    fontWeight: "300",
+//    fontStyle: 'italic',
+// }
 })
