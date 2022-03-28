@@ -40,7 +40,6 @@ export default class Start extends React.Component {
          <View style={styles.container}>
             <ImageBackground source={image} resizeMode="cover" style={styles.image}>
             <Text style={styles.title}
-                        accessibilityRole = 'App Title'
                         accessibilityLabel='Welcome to UDO chat App'>
                UDO {"\n"} Chat App
             </Text >
