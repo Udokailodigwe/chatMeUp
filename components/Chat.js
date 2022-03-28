@@ -106,7 +106,6 @@ export default class Chat extends React.Component {
       );
    }
 
-
    addMessages() {
          const messages = this.state.messages[0];
          //add new message to document field in the collection
