@@ -20,3 +20,4 @@ export const renderSystemMessage = (props) => (
       textStyle={{ color: 'white',  fontStyle: 'italic'}}
    />
 );
+
