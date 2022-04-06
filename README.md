@@ -32,7 +32,7 @@ As a user, i want to flexibly select the design of my chat environment options a
 <li>React Native</li>
 <li>Node.js & npm</li>
 <li>Expo/Expo Go</li>
-<li>Firebase, Please refer to the [Firebase Docs](https://firebase.google.com/docs/).</li>
+<li>Firebase, Please refer to docs(https://firebase.google.com/docs/).</li>
 <li>Andriod Studio, (Andriod only) optional</li>
 <li>Xcode, (IOS only) optional</li>
 
