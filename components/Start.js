@@ -61,23 +61,23 @@ export default class Start extends React.Component {
             </Text>
          <View style={styles.color_display}>
             <ColorButtons
-            style={styles.first_color}
-            onPress={() => this.changeBackgroundColor(this.colors.skyblue)}> 
-            </ColorButtons>               
+               style={styles.first_color}
+               onPress={() => this.changeBackgroundColor(this.colors.skyblue)}
+            />               
             <ColorButtons
-            style={styles.second_color}
-            onPress={() => this.changeBackgroundColor(this.colors.gold)}>
-            </ColorButtons>               
+               style={styles.second_color}
+               onPress={() => this.changeBackgroundColor(this.colors.gold)}
+            />              
             <ColorButtons
-            style={styles.third_color}
-            onPress={() => this.changeBackgroundColor(this.colors.darkgreen)}>
-            </ColorButtons>               
+               style={styles.third_color}
+               onPress={() => this.changeBackgroundColor(this.colors.darkgreen)}
+            />               
             <ColorButtons
-            style={styles.fourth_color}
-            onPress={() => this.changeBackgroundColor(this.colors.green)}>
-            </ColorButtons>               
-            </View>
-            </View>
+               style={styles.fourth_color}
+               onPress={() => this.changeBackgroundColor(this.colors.green)}
+            />               
+         </View>
+      </View>
             <EnterChatButton 
             //onPress function to route and navigate props to chat screen, props like name, bgcolor.
                onPress={() => this.props.navigation.navigate('Chat', {
