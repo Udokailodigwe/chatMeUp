@@ -3,7 +3,10 @@ import { InputToolbar, GiftedChat } from 'react-native-gifted-chat';
 import { View, Text, StyleSheet, Platform, KeyboardAvoidingView } from 'react-native';
 import {renderBubble, renderSystemMessage} from './MessageContainer'; 
 import AsyncStorage from '@react-native-async-storage/async-storage'; //save data in native app storage
-import NetInfo from '@react-native-community/netinfo'; //know a user is online
+import NetInfo from '@react-native-community/netinfo'; //know when a user is online
+import MapView from 'react-native-maps';
+import { CustomActions } from './CustomActions';
+// import Lightbox from 'react-native-lightbox-v2'
 
 //require firebase to read/update/add data from firebase cloud database
 const firebase = require('firebase');
@@ -23,6 +26,10 @@ export default class Chat extends React.Component {
       this.state = {
          messages: [ ],
          uid: 0,
+         image: null,
+         cameraPhoto: null,
+         isConnected: false,
+         location: null,
          user: {
             _id: '',
             name: '',
@@ -139,14 +146,15 @@ export default class Chat extends React.Component {
                name: data.user.name,
                avatar:data.user.avatar,
             },
+            image: data.image || null,
+            location: data.location || null,
          });
       });
          this.setState({
             messages: messages,
       });
    };
-
-   
+   //when user sends a message
    onSend(messages = []) {
       this.setState((previousState) => ({
          messages: GiftedChat.append(previousState.messages, messages),
@@ -169,11 +177,37 @@ export default class Chat extends React.Component {
       });
    }
 
+   //use this function to disable input field section if user is offline
    renderInputToolbar(props) {
       if (this.state.isConnected == false) {
-      } else {
+         } else {
       return <InputToolbar {...props} />;
       }
+   }
+   
+   renderCustomActions = (props) => {
+      return <CustomActions {...props } />;
+   };
+
+   renderCustomView(props){
+      const {currentMessage} = props;
+      if (currentMessage.location) {
+         return (
+               <MapView
+                  style={{width: 150,
+                  height: 100,
+                  borderRadius: 13,
+                  margin: 3}}
+               region={{
+                  latitude: currentMessage.location.latitude,
+                  longitude: currentMessage.location.longitude,
+                  latitudeDelta: 0.0922,
+                  longitudeDelta: 0.0421,
+               }}
+               />
+            );
+         }
+      return null;
    }
 
    render () {
@@ -184,10 +218,12 @@ export default class Chat extends React.Component {
          <View style={{flex: 1, backgroundColor: backgroundColor //use recieved props as style properties
             }}>
                <Text style={styles.text}>Welcome to Chat Room </Text>
-               <GiftedChat
+                  <GiftedChat
                   messages = {this.state.messages}
                   renderBubble = {renderBubble} //imported function from messageContainer
-                  renderSystemMessage = {renderSystemMessage}
+                  //renderSystemMessage = {renderSystemMessage}
+                  renderActions = {this.renderCustomActions}
+                  renderCustomView = {this.renderCustomView}
                   onSend = {(messages) => this.onSend(messages)}
                   renderInputToolbar={this.renderInputToolbar.bind(this)}
                   user={{
@@ -195,7 +231,6 @@ export default class Chat extends React.Component {
                         name: this.state.name,
                         avatar: this.state.user.avatar
                   }}
-               
                />
                {/* Avoid input field to be hidden under keyboard */}
                { Platform.OS === 'android' ? <KeyboardAvoidingView behavior="height" /> : null} 
