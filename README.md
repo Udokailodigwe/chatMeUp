@@ -24,4 +24,27 @@ As a user, i want to flexibly select the design of my chat environment options a
 <li>The app must be able to read the user’s location data.</li>
 <li>Location data must be sent via the chat in a map view.</li>
 <li>The chat interface and functionality must be created using the Gifted Chat library.</li>
-<li>The app’s codebase must contain comments.</li>
+
+# Setting Up The App
+
+## Build Requirements
+</br>
+<li>React Native</li>
+<li>Node.js & npm</li>
+<li>Expo/Expo Go</li>
+<li>Firebase, Please refer to the [Firebase Docs](https://firebase.google.com/docs/).</li>
+<li>Andriod Studio, (Andriod only) optional</li>
+<li>Xcode, (IOS only) optional</li>
+
+## Installation
+</br>
+Fork or download this repo. </br>
+npm install or yarn install in the terminal to install all dependencies.
+
+## How to set chatMeUp running
+</br>
+1. Download and install the code.</br>
+2. Install Expo globally npm install --global expo-cli.</br>
+3. To start the app, run expo start or npm start.</br>
+4. To run the app on a device, install an emulator or install expo go on your smartphone.
+
