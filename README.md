@@ -3,12 +3,12 @@
 </hr>
 This is a chat application for mobile devices. It is built with the use of React Native.
 </br>
-It will allows users to select background chat room colors of their choice, share images and location on their chat interface.
+Users will be able to select background chat room colors of their choice, share images and location on their chat interface.
 </br>
 
 ## User Story
 </br>
-As a user, i want to flexibly select the design of my chat environment options and easily enter a chatroom, so i can quickly chat with my friends and family. Share images and location with my friends and family too.
+As a user, i want to flexibly select the design of my chatroom environment and easily enter a chatroom, so i can quickly chat with my friends and family. Share images and location with my friends and family too.
 
 ## Key Features
 </br>
