@@ -9,7 +9,7 @@ import {
    // Pressable,
    Button 
 } from 'react-native'; // import react-native components
-
+import { EnterChatButton, ColorButtons } from './ButtonContainer';
 const image = require ('../assets/BackgroundImage.png');
 
 export default class Start extends React.Component {
@@ -55,56 +55,39 @@ export default class Start extends React.Component {
             /> 
          <View>
             <Text  style={styles.color_info_text} 
-                        accessibilityLabel='Select colors for chatroom below'> 
+               accessibilityLabel='Select colors for chatroom below'
+            > 
                Tap to select different Chat Room color
             </Text>
          <View style={styles.color_display}>
-                  {/*TouchableOpacity allowed for the selection of various colors, recieved setState*/}
-            <TouchableOpacity
-            accessible={true}
-            accessibilityLabel='Chatroom color'
-            accessibilityHint="Select Chatroom color"
+            <ColorButtons
             style={styles.first_color}
             onPress={() => this.changeBackgroundColor(this.colors.skyblue)}> 
-            </TouchableOpacity>               
-            <TouchableOpacity
-            accessible={true}
-            accessibilityLabel='Chatroom color'
-            accessibilityHint="Select Chatroom color"
+            </ColorButtons>               
+            <ColorButtons
             style={styles.second_color}
             onPress={() => this.changeBackgroundColor(this.colors.gold)}>
-            </TouchableOpacity>               
-            <TouchableOpacity
-            accessible={true}
-            accessibilityLabel='Chatroom color'
-            accessibilityHint="Select Chatroom color"
+            </ColorButtons>               
+            <ColorButtons
             style={styles.third_color}
             onPress={() => this.changeBackgroundColor(this.colors.darkgreen)}>
-            </TouchableOpacity>               
-            <TouchableOpacity
-            accessible={true}
-            accessibilityLabel='Chatroom color'
-            accessibilityHint="Select Chatroom color"
+            </ColorButtons>               
+            <ColorButtons
             style={styles.fourth_color}
             onPress={() => this.changeBackgroundColor(this.colors.green)}>
-            </TouchableOpacity>               
+            </ColorButtons>               
             </View>
             </View>
-            {/*Used pressable to form button like component*/}
-            <Button 
-            accessibilityLabel='Enter chatroom'
-            title = ' Enter Chat Room'
-            style={styles.pressable_button}
+            <EnterChatButton 
             //onPress function to route and navigate props to chat screen, props like name, bgcolor.
-            onPress={() => this.props.navigation.navigate('Chat', {
+               onPress={() => this.props.navigation.navigate('Chat', {
                name:  this.state.name, 
-               name2:  this.state.name, 
                backgroundColor: this.state.backgroundColor
                })}
-            >
-               {/* <Text style= {styles.pressable_button_text}>Enter Chat Room</Text> */}
-            </Button>
-         </View>
+               label = 'Enter Chat Room'
+               style = {styles.button_container}
+            />
+            </View>
          </ImageBackground>
       </View>
       );
@@ -197,23 +180,16 @@ color_info_text: {
    color: 'white',
    margin: 10
 },
-// pressable_button: {
-//    width: '50%',
-//    height: 35,
-//    backgroundColor: '#8A95A5',
-//    alignItems: 'center',
-//    justifyContent: 'center',
-//    margin: 20,
-//    marginLeft: 90,
-//    padding: 3,
-//    borderRadius: 15,
-//    shadowOpacity: 6,
-
-// },
-// pressable_button_text: {
-//    color: 'black',
-//    fontSize: 22,
-//    fontWeight: "300",
-//    fontStyle: 'italic',
-// }
+button_container: {
+   width: '50%',
+   height: 35,
+   backgroundColor: '#8A95A5',
+   alignItems: 'center',
+   justifyContent: 'center',
+   margin: 20,
+   marginLeft: 90,
+   padding: 3,
+   borderRadius: 15,
+   shadowOpacity: 6,
+},
 })
