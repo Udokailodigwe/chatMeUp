@@ -13,11 +13,11 @@ export const renderBubble = (props) => (
    />
 );
 
-export const renderSystemMessage = (props) => (
-   <SystemMessage
-      {...props}      
-      wrapperStyle={{marginBottom: 33, marginTop: -10 }}
-      textStyle={{ color: 'white',  fontStyle: 'italic'}}
-   />
-);
+// export const renderSystemMessage = (props) => (
+//    <SystemMessage
+//       {...props}      
+//       wrapperStyle={{marginBottom: 33, marginTop: -10 }}
+//       textStyle={{ color: 'white',  fontStyle: 'italic'}}
+//    />
+// );
 
