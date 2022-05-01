@@ -41,7 +41,7 @@ export default class Start extends React.Component {
             <ImageBackground source={image} resizeMode="cover" style={styles.image}>
             <Text style={styles.title}
                         accessibilityLabel='Welcome to UDO chat App'>
-               UDO {"\n"} Chat App
+               chatMeUp
             </Text >
          <View style={styles.mid_view}>
             <Text style={styles.input_label} accessibilityLabel='Input your name'>
